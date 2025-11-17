@@ -20,11 +20,11 @@ struct EmptyStateView: View {
             Text("👕")
                 .font(.system(size: 48))
             
-            Text("Nessun capo nell'armadio")
+            Text("No item in closet")
                 .font(.system(size: 18, weight: .medium))
                 .foregroundColor(.primary)
             
-            Text("Premi il pulsante + per aggiungere i tuoi vestiti")
+            Text("Press + to add your clothes")
                 .font(.system(size: 14))
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)

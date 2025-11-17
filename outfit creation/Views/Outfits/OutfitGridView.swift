@@ -18,7 +18,7 @@ struct OutfitGridView: View {
                 VStack(spacing: 16) {
                     Text("👗")
                         .font(.system(size: 48))
-                    Text("Nessun outfit disponibile")
+                    Text("No outfit available")
                         .font(.headline)
                 }
                 .padding(.top, 60)

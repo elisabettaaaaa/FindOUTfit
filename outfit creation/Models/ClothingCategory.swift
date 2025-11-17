@@ -16,10 +16,10 @@ import Foundation
 
 enum ClothingCategory: String, Codable, CaseIterable {
     case tops = "Tops"
-    case bottoms = "Pantaloni"
-    case skirts = "Gonne"
-    case dresses = "Vestiti"
-    case outerwear = "Capispalla"
-    case shoes = "Scarpe"
-    case accessories = "Accessori"
+    case bottoms = "Trousers"
+    case skirts = "Skirts"
+    case dresses = "Dresses"
+    case outerwear = "Coats"
+    case shoes = "Shoes"
+    case accessories = "Accessories"
 }

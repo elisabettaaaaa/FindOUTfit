@@ -18,22 +18,22 @@ struct AddClothingView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Dettagli Capo")) {
-                    TextField("Nome capo", text: $name)
+                Section(header: Text("Item Detail")) {
+                    TextField("Item Name", text: $name)
                         .textInputAutocapitalization(.words)
                     
-                    Picker("Categoria", selection: $selectedCategory) {
+                    Picker("Category", selection: $selectedCategory) {
                         ForEach(ClothingCategory.allCases, id: \.self) { category in
                             Text(category.rawValue).tag(category)
                         }
                     }
                     .pickerStyle(.menu)
                     
-                    TextField("Colore", text: $color)
+                    TextField("Color", text: $color)
                         .textInputAutocapitalization(.words)
                 }
 
-                Section(header: Text("Immagine")) {
+                Section(header: Text("Photo")) {
                     // Anteprima immagine con stato
                     ZStack {
                         if let img = processedImage {
@@ -113,7 +113,7 @@ struct AddClothingView: View {
                                     .font(.system(size: 40))
                                     .foregroundColor(.gray.opacity(0.5))
                                 
-                                Text("Aggiungi foto")
+                                Text("Add a photo")
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 
@@ -129,7 +129,7 @@ struct AddClothingView: View {
                                         HStack(spacing: 6) {
                                             Image(systemName: "camera")
                                                 .font(.system(size: 16))
-                                            Text("Scatta")
+                                            Text("Camera")
                                                 .font(.subheadline)
                                         }
                                         .foregroundColor(.primary)
@@ -147,7 +147,7 @@ struct AddClothingView: View {
                                         HStack(spacing: 6) {
                                             Image(systemName: "photo")
                                                 .font(.system(size: 16))
-                                            Text("Galleria")
+                                            Text("Photos")
                                                 .font(.subheadline)
                                         }
                                         .foregroundColor(.primary)
@@ -184,7 +184,7 @@ struct AddClothingView: View {
                             HStack {
                                 Image(systemName: "arrow.triangle.2.circlepath")
                                     .font(.subheadline)
-                                Text("Cambia foto")
+                                Text("Change photo")
                                     .font(.subheadline)
                             }
                             .foregroundColor(.secondary)
@@ -193,14 +193,14 @@ struct AddClothingView: View {
                     }
                 }
             }
-            .navigationTitle("Nuovo Capo")
+            .navigationTitle("New Item")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Annulla") { dismiss() }
+                    Button("Cancel") { dismiss() }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Salva") { saveClothingItem() }
+                    Button("Save") { saveClothingItem() }
                         .disabled(!canSave)
                         .fontWeight(.semibold)
                 }
@@ -212,21 +212,21 @@ struct AddClothingView: View {
                     }
             }
             .confirmationDialog("Scegli sorgente", isPresented: $showImageSourcePicker) {
-                Button("Scatta foto") {
+                Button("Take a photo") {
                     pickedImage = nil
                     processedImage = nil
                     errorMsg = nil
                     imageSourceType = .camera
                     showImagePicker = true
                 }
-                Button("Scegli dalla galleria") {
+                Button("Choose from photos") {
                     pickedImage = nil
                     processedImage = nil
                     errorMsg = nil
                     imageSourceType = .photoLibrary
                     showImagePicker = true
                 }
-                Button("Annulla", role: .cancel) { }
+                Button("Cancel", role: .cancel) { }
             }
             .onChange(of: pickedImage) { oldValue, newValue in
                 if let newImage = newValue {

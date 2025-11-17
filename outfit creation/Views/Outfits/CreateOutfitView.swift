@@ -17,10 +17,10 @@ struct CreateOutfitView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Nome Outfit")) {
-                    TextField("Nome", text: $outfitName)
+                Section(header: Text("Outfit Name")) {
+                    TextField("Name", text: $outfitName)
                 }
-                Section(header: Text("Seleziona capi da abbinare")) {
+                Section(header: Text("Select items to match")) {
                     ScrollView(.horizontal) {
                         HStack {
                             ForEach(viewModel.clothingItems) { item in
@@ -42,13 +42,13 @@ struct CreateOutfitView: View {
                     }
                 }
             }
-            .navigationTitle("Crea Outfit")
+            .navigationTitle("Create Outfit")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Annulla") { dismiss() }
+                    Button("Cancel") { dismiss() }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Salva") {
+                    Button("Save") {
                         let outfit = Outfit(name: outfitName, clothingItems: selectedItems)
                         viewModel.addOutfit(outfit)
                         dismiss()
